@@ -1,0 +1,17 @@
+primary: hsl(210, 75, 50)
+primary-light: hsl(210, 100, 90)
+primary-dark: hsl(210, 75, 30)
+
+secundary: hsl(180, 75, 50)
+secundary-light: hsl(180, 100, 80)
+
+vibrant-red: hsl(345, 90, 75)
+
+black: hsl(0,0,20)
+light-black: hsl(0,0,40)
+
+full-white: #fff
+white: hsl(0,0,90)
+semi-white: hsl(0,0,75)
+gray: hsl(0,0,50)
+

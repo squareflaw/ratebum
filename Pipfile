@@ -1,0 +1,42 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[requires]
+
+python_version = "3.6"
+
+
+[packages]
+
+requests="*"
+django-cors-headers="*"
+certifi="*"
+chardet="*"
+colorama="*"
+coverage="*"
+dj-database-url="*"
+django-extensions="*"
+django-heroku="*"
+django-nose="*"
+django-rest-framework="*"
+django="*"
+djangorestframework="*"
+gunicorn="*"
+idna="*"
+nose="*"
+pinocchio="*"
+psycopg2="*"
+pyjwt="*"
+pytz="*"
+six="*"
+urllib3="*"
+whitenoise="*"
+
+
+
+[dev-packages]
+
