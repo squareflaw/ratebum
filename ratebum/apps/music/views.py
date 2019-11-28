@@ -33,7 +33,7 @@ def search(request):
 
     if query is None:
         raise ValidationError('a q parameter is necesary in a search request')
-    if query.strip() is '':
+    if query.strip() == '':
         raise ValidationError('query parameter cannot be empty')
 
     search_results = spotify_api.search(query, types, limit)

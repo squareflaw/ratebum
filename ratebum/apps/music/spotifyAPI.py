@@ -90,6 +90,53 @@ class SpotifyAPI():
     def get_album(self, id):
         url = 'https://api.spotify.com/v1/albums/{}'.format(id)
         return self.get(url)
+        return results.get('tracks', [])
+
+    # ------------------------------------------------------------------
+    #   ANALYSIS 
+    # ------------------------------------------------------------------
+
+    def get_analysis(self, id):
+        url = 'https://api.spotify.com/v1/audio-analysis/{}'.format(id)
+        return self.get(url)
+        
+
+if __name__ == '__main__':
+
+    CLIENT_ID = '470816bebb83446bac489c7e996f069c'
+    CLIENT_SECRET = 'fad5841e54d9454ab982cd628a30caf0'
+
+    spotify = SpotifyAPI(CLIENT_ID, CLIENT_SECRET)
+
+    def get_artist_top_song_analysis(artist_name_query):
+        song_id = get_artist_top_song_id(artist_name_query)
+        return spotify.get_analysis(song_id)
+
+    def get_artist_top_song_id(artist_name_query):
+        artists_search_results = spotify.search(artist_name_query, 'artist', 5)
+        artist_id = artists_search_results['artists']['items'][0]['id']
+        results = spotify.get_top_tracks_from_artist(artist_id)
+        top_song_id = results[0]['id']
+        return top_song_id
+
+    def print_top_tracks(artist_name):
+        search_results = spotify.search(artist_name,'artist', 5)
+        artist_id = search_results['artists']['items'][0]['id']
+        top_tracks = spotify.get_top_tracks_from_artist(artist_id)
+
+        print('\n')
+        
+        for track in top_tracks:
+            track_name = track['name']
+            track_date = track['album']['release_date']
+            track_popularity = track['popularity']
+
+            string_format = '{} {} ({})'.format(track_popularity, track_name, track_date)
+            print(string_format)
+
+        print('\n')
+
+    print_top_tracks('franz')
 
 
         
