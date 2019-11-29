@@ -3,7 +3,6 @@ import requests
 
 def get_access_token(client_id, client_secret):
     url = 'https://accounts.spotify.com/api/token'
-    ACCESS_TOKEN = None
 
     credentials = client_id + ':' + client_secret
     encoded_credentials = base64.b64encode(credentials.encode('utf-8'))
