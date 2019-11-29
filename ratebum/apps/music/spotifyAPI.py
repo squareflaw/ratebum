@@ -45,7 +45,6 @@ class SpotifyAPI():
         # and try again the request
         if response.status_code == 401:
             self._token = get_access_token(self.client_id,self.client_secret)
-
             response = requests.get(
                 url,
                 headers=self.generate_headers(),
