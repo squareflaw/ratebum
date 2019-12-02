@@ -31,7 +31,7 @@ class Profile(TimestampedModel):
         return self.radar_items.filter(spotify_id=item_id).exists()
 
     def is_artist_on_lineup(self, artist_id):
-        return self.artists_on_lineup.filter(spotify_id=artist_id).exists()
+        return self.lineup_members.filter(spotify_id=artist_id).exists()
 
     def follow(self, profile):
         self.follows.add(profile)

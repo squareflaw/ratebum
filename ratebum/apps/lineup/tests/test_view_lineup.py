@@ -51,3 +51,13 @@ class LineupViewTestCase(APITestCase):
         self.client.post(reverse(self.url_name), body)
         response = self.client.get(reverse(self.url_name)+'?order=oldest')
         self.assertEqual(response.data[0]['spotify_id'], self.artist_id)
+
+
+    def test_should_delete_member(self):
+        url_name = 'lineup:lineupDeleteMember'
+        artist_id = '5BvJzeQpmsdsFp4HGUYUEx'
+        body = {"id":artist_id}
+        self.client.post(reverse(self.url_name), body)
+        response = self.client.delete(reverse(url_name, kwargs={'spotify_id': artist_id}))
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertFalse(self.profile.is_artist_on_lineup(artist_id))

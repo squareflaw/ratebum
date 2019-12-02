@@ -35,7 +35,7 @@ class LineupAPIView(APIView):
         spotify_id = request.data.get('id')
         user = request.user.profile
 
-        if user.lineup_members.filter(spotify_id=spotify_id).exists():
+        if user.is_artist_on_lineup(spotify_id):
             raise ValidationError('member is already in lineup')
           
         artist_model_instance = get_music_model_instance(spotify_id, 'artist')
@@ -49,14 +49,14 @@ class LineupAPIView(APIView):
             member_serializer.data, status=status.HTTP_201_CREATED
         )        
 
-    # def delete(self, request, spotify_id):
-    #     profile = request.user.profile
+    def delete(self, request, spotify_id):
+        profile = request.user.profile
 
-    #     if not spotify_id:
-    #         raise ValidationError('id required')
+        if not spotify_id:
+            raise ValidationError('id required')
 
-    #     if not profile.is_item_on_radar(spotify_id):
-    #         raise ValidationError("item is not on user's radar")
+        if not profile.is_artist_on_lineup(spotify_id):
+            raise ValidationError("Artist is not on user's radar")
 
-    #     profile.radar_items.all().get(spotify_id=spotify_id).delete()
-    #     return Response(status=status.HTTP_204_NO_CONTENT)
+        profile.lineup_members.all().get(spotify_id=spotify_id).delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

@@ -7,7 +7,7 @@ class Member(TimestampedModel):
 
     user = models.ForeignKey(
         'profiles.Profile',
-        on_delete=models.CASCADE, 
+        on_delete=models.CASCADE,
         related_name='lineup_members'
     )
 
@@ -27,3 +27,4 @@ class Member(TimestampedModel):
         if order == 'oldest':
             queryset = queryset.order_by('created_at')
             return queryset
+        return None
