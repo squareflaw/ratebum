@@ -4,7 +4,7 @@ from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
 
 class LineupViewTestCase(APITestCase):
-    
+
     def setUp(self):
         self.client = APIClient()
         self.url_name = 'lineup:lineup'
@@ -31,3 +31,7 @@ class LineupViewTestCase(APITestCase):
         self.assertEqual(
             self.member_response.data['spotify_id'],
             self.artist_id)
+
+    def test_should_get_lineup_members(self):
+        response = self.client.get(reverse(self.url_name))
+        self.assertIsNotNone(response.data[0]['spotify_id'])
