@@ -25,12 +25,21 @@ class LineupViewTestCase(APITestCase):
             password='test'
         ) 
 
-    def test_should_create_new_album_item(self):
+    def test_should_create_new_lineup_member(self):
         self.assertEqual(
-            self.member_response.status_code, status.HTTP_201_CREATED)
+            self.member_response.status_code, status.HTTP_201_CREATED
+        )
         self.assertEqual(
             self.member_response.data['spotify_id'],
-            self.artist_id)
+            self.artist_id
+        )
+
+    def test_should_return_404_if_wrong_artist_id(self):
+        body = {"id": "5INjqkS1o8h1imAzPqGZrsa"}
+        response = self.client.post(reverse(self.url_name), body)
+        self.assertEqual(
+            response.status_code, status.HTTP_404_NOT_FOUND
+        )
 
     def test_should_get_lineup_members(self):
         response = self.client.get(reverse(self.url_name))

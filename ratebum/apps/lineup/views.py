@@ -35,7 +35,7 @@ class LineupAPIView(APIView):
 
         if user.lineup_members.filter(spotify_id=spotify_id).exists():
             raise ValidationError('member is already in lineup')
-           
+          
         artist_model_instance = get_music_model_instance(spotify_id, 'artist')
         member = Member.objects.create(
             spotify_id=artist_model_instance.spotify_id,
@@ -44,8 +44,7 @@ class LineupAPIView(APIView):
         )
         member_serializer = self.serializer_class(member)
         return Response(
-            member_serializer.data, 
-            status=status.HTTP_201_CREATED
+            member_serializer.data, status=status.HTTP_201_CREATED
         )        
 
     # def delete(self, request, spotify_id):
