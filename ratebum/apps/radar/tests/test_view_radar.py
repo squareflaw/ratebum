@@ -79,7 +79,7 @@ class RadarViewTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertFalse(self.profile.is_item_on_radar(self.album_id)) 
 
-    def test_should_raise_404_NOT_FOUND_if_album_id_is_wrong(self):
+    def test_should_return_404_NOT_FOUND_if_album_id_is_wrong(self):
         body = {'id': 'wrongid', 'itemType': self.album_type}
         response = self.client.post(reverse(self.urlName), body)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
