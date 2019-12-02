@@ -7,19 +7,19 @@ class LineupViewTestCase(APITestCase):
     
     def setUp(self):
         self.client = APIClient()
-        self.urlName = 'lineup:lineup'
+        self.url_name = 'lineup:lineup'
         self.user = self.setup_user()
         self.profile = self.user.profile
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.user.token)
 
         self.artist_id = '5INjqkS1o8h1imAzPqGZBb'
         self.body = {"id":self.artist_id}
-        self.member_response = self.client.post(reverse(self.urlName), self.body)
+        self.member_response = self.client.post(reverse(self.url_name), self.body)
 
     @staticmethod
     def setup_user():
-        User = get_user_model()
-        return User.objects.create_user(
+        user = get_user_model()
+        return user.objects.create_user(
             'test',
             email='testuser@test.com',
             password='test'
