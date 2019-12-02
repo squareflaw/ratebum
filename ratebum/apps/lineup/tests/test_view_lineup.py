@@ -44,3 +44,10 @@ class LineupViewTestCase(APITestCase):
     def test_should_get_lineup_members(self):
         response = self.client.get(reverse(self.url_name))
         self.assertIsNotNone(response.data[0]['spotify_id'])
+
+    def test_should_get_lineup_members_ordered_by_oldest(self):
+        artist_id = '6FQqZYVfTNQ1pCqfkwVFEa'
+        body = {"id":artist_id}
+        self.client.post(reverse(self.url_name), body)
+        response = self.client.get(reverse(self.url_name)+'?order=oldest')
+        self.assertEqual(response.data[0]['spotify_id'], self.artist_id)

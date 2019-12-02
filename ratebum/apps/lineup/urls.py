@@ -3,7 +3,7 @@ from .views import (
     LineupAPIView,
 )
 
-app_name='lineup'
+app_name = 'lineup'
 
 urlpatterns = [
     path(
@@ -12,7 +12,7 @@ urlpatterns = [
         name='lineupDeleteMember'
     ),
     path(
-        'lineup',
+        'lineup/',
         LineupAPIView.as_view(),
         name='lineup'
     ),  

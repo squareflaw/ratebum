@@ -12,7 +12,18 @@ class Member(TimestampedModel):
     )
 
     artist = models.ForeignKey(
-        'music.Artist',        
+        'music.Artist',
         on_delete=models.CASCADE, 
         related_name='lineups'
     )
+
+    @staticmethod
+    def get_lineup_members(user, order):
+        queryset = user.lineup_members.all()
+
+        if order == 'newest':
+            return queryset
+
+        if order == 'oldest':
+            queryset = queryset.order_by('created_at')
+            return queryset

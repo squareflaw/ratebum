@@ -25,8 +25,10 @@ class LineupAPIView(APIView):
     serializer_class = MemberSerializer
 
     def get(self, request):
-        member = request.user.profile.lineup_members.all().reverse()
-        member_serializer = self.serializer_class(member, many=True)
+        user = request.user.profile
+        order = request.GET.get('order', 'newest')
+        lineup_members = Member.get_lineup_members(user, order)
+        member_serializer = self.serializer_class(lineup_members, many=True)
         return Response(member_serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):

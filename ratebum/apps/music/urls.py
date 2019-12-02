@@ -5,7 +5,7 @@ from .views import (
     get_album,
 )
 
-app_name='music'
+app_name = 'music'
 
 urlpatterns = [
     path(
