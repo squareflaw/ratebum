@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'ratebum.apps.profiles',
     'ratebum.apps.music',    
     'ratebum.apps.radar',    
+    'ratebum.apps.lineup',    
 ]
 
 MIDDLEWARE = [

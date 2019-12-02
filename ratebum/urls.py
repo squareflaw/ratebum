@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/', include('ratebum.apps.profiles.urls')),
     path('api/', include('ratebum.apps.music.urls')),
     path('api/', include('ratebum.apps.radar.urls')),
+    path('api/', include('ratebum.apps.lineup.urls')),
 ]

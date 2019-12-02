@@ -40,9 +40,8 @@ class SpotifyAPI():
         if response.status_code >= 400 and response.status_code != 401: 
             response.raise_for_status()
 
-        # if we get an error 401 it may be that our access token
-        # has expired, we refresh the token getting a new one 
-        # and try again the request
+        # separate execption for error 401 because it may be that our access token
+        # has expired and we need to get a new one.
         if response.status_code == 401:
             self._token = get_access_token(self.client_id,self.client_secret)
             response = requests.get(
@@ -88,7 +87,6 @@ class SpotifyAPI():
     def get_album(self, id):
         url = 'https://api.spotify.com/v1/albums/{}'.format(id)
         return self.get(url)
-        return results.get('tracks', [])
 
     # ------------------------------------------------------------------
     #   ANALYSIS 
@@ -107,15 +105,15 @@ if __name__ == '__main__':
     spotify = SpotifyAPI(CLIENT_ID, CLIENT_SECRET)
 
     def get_artist_top_song_analysis(artist_name_query):
-        song_id = get_artist_top_song_id(artist_name_query)
+        song_id = get_artist_top_song(artist_name_query)
         return spotify.get_analysis(song_id)
 
-    def get_artist_top_song_id(artist_name_query):
+    def get_artist_top_song(artist_name_query):
         artists_search_results = spotify.search(artist_name_query, 'artist', 5)
         artist_id = artists_search_results['artists']['items'][0]['id']
         results = spotify.get_top_tracks_from_artist(artist_id)
-        top_song_id = results[0]['id']
-        return top_song_id
+        top_song = results[0]
+        return top_song
 
     def print_top_tracks(artist_name):
         search_results = spotify.search(artist_name,'artist', 5)
