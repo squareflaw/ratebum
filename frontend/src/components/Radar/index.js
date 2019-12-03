@@ -15,7 +15,7 @@ import { GET_RADAR_ITEMS, DELETE_FROM_RADAR} from '../../constants/actionType'
 const mapStateToProps = (state) => ({
   inProgress: state.common.inProgress,
   currentUser: state.common.currentUser,
-  radarItems: state.music.radarItems,
+  radarItems: state.radar.radarItems,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -16,6 +16,9 @@ export const SEARCH = "SEARCH";
 export const GET_RADAR_ITEMS  = "GET_RADAR_ITEMS";
 export const ADD_TO_RADAR = "ADD_TO_RADAR";
 export const DELETE_FROM_RADAR = "DELETE_FROM_RADAR";
+export const GET_LINEUP_MEMBERS  = "GET_LINEUP_MEMBERS";
+export const ADD_TO_LINEUP = "ADD_TO_LINEUP";
+export const DELETE_FROM_LINEUP = "DELETE_FROM_LINEUP";
 
 
 

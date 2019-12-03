@@ -25,25 +25,25 @@ const RadarList = (props) => {
         key={item.spotify_id}
         id={item.spotify_id}
         isArtist={!item.album}
-        pic={item.album? 
+        pic={item.album ? 
           item.album.image_url.split(',')[1]
           :
           item.artist.image_url.split(',')[1]
         }
         artistName={item.artist.name}
-        albumName={item.album? item.album.name: ''}
-        spotify_url={item.album? item.album.spotify_url : item.artist.spotify_url}
-        year={item.album? item.album.release_date.slice(0,4):''}
-        genres={!item.album? item.artist.genres: ''}
+        albumName={item.album ? item.album.name : ''}
+        spotify_url={item.album ? item.album.spotify_url : item.artist.spotify_url}
+        year={item.album ? item.album.release_date.slice(0, 4) : ''}
+        genres={!item.album ? item.artist.genres : ''}
         deleteItem={props.deleteItem}
       />
     )
   })
 
   return (
-    <MainDiv> 
+    <MainDiv>
       <Wrapper>
-        <OrderingSelector/> 
+        <OrderingSelector/>
         <List>
           {Items}
         </List>
@@ -52,4 +52,4 @@ const RadarList = (props) => {
   )
 }
 
-export default RadarList;
+export default RadarList
