@@ -11,12 +11,12 @@ const MainDiv = styled.div`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%:
+  width: 100%;
 `
 
 const Section = styled.div`
-  margin 20px 0;
-  width: 100%:
+  margin: 20px 0;
+  width: 100%;
 `
 const SectionTitle = styled.p`
   margin: 20px;
@@ -25,7 +25,7 @@ const SectionTitle = styled.p`
 `
 
 const List = styled.ul`
-  margin 20px 0;  
+  margin : 20px 0;  
 `
 
 const Results = (props) => {

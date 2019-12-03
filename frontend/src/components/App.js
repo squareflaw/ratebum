@@ -11,6 +11,7 @@ import agent from '../agent'
 import Navigation from './Navigation/'
 // import Home from './Home/'
 import Radar from './Radar/'
+import Lineup from './Lineup/'
 import SearchComponent from './SearchComponent/'
 import Login from './forms/Login' 
 import Registration from './forms/Registration' 
@@ -86,6 +87,7 @@ export class App extends Component {
         <Switch>         
           <Route exact path="/" component={Radar} />          
           <Route path="/radar" component={Radar} />           
+          <Route path="/Lineup" component={Lineup} />           
           <Route path="/search" component={SearchComponent} />         
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Registration}/>

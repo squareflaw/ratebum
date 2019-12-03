@@ -5,6 +5,7 @@ export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
 export const REGISTER = "REGISTER";
 export const REDIRECT = "REDIRECT";
+export const CHANGE_PAGE_TITLE = "CHANGE_PAGE_TITLE";
 export const CLEAN_ERRORS = "CLEAN_ERRORS";
 export const GET_ITEMS = "GET_ITEMS";
 export const CREATE_ITEM = "CREATE_ITEM";

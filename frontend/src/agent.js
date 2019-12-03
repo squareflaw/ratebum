@@ -41,8 +41,6 @@ const search = query => {
   return requests.get(`/search?q=${q}`);
 }
 
-
-
 const radar = {
   items: () => 
     requests.get(`/radar`),
@@ -52,9 +50,19 @@ const radar = {
     requests.del(`/radar/${id}`)
 }
 
+const lineup = {
+  members: (order) => 
+    requests.get(`/lineup?order=${order}`),
+  add: (id) => 
+    requests.post('/lineup', {id: id}),
+  delete: (id) =>
+    requests.del(`/lineup/${id}`)
+}
+
 export default {
   search,
   auth,
   radar,
+  lineup,
   setToken: _token => { token = _token}
 }

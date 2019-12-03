@@ -1,29 +1,29 @@
 import {
-    GET_RADAR_ITEMS,
-    ADD_TO_RADAR,
-    DELETE_FROM_RADAR,
+    GET_LINEUP_MEMBERS,
+    ADD_TO_LINEUP,
+    DELETE_FROM_LINEUP,
 } from '../constants/actionType';
 
 const defaultState = {
-    radarItems: []
+    lineupMembers: []
 }
 
 export default (state = defaultState, action) => {
     switch (action.type) {
-        case GET_RADAR_ITEMS:
+        case GET_LINEUP_MEMBERS:
             return {
                 ...state,
-                radarItems: action.error ? [] : action.payload.radarItems
+                lineupMembers: action.error ? [] : action.payload.Members
             };
-        case ADD_TO_RADAR:
+        case ADD_TO_LINEUP:
             return {
                 ...state,
-                radarItems: action.error ? state.radarItems : [...state.radarItems, action.payload.radarItem]
+                lineupMembers: action.error ? state.lineupMembers : [...state.lineupMembers, action.payload.radarItem]
             };
-        case DELETE_FROM_RADAR:
+        case DELETE_FROM_LINEUP:
             return {
                 ...state,
-                radarItems: action.error ? state.radarItems : state.radarItems.filter(item => {
+                lineupMembers: action.error ? state.lineupMembers : state.lineupMembers.filter(item => {
                     return item.spotify_id !== action.id
                 })
             }

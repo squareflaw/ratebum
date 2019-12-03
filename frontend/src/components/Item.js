@@ -54,7 +54,7 @@ const Item = (props) => {
 
   const secundaryInfo = props.genres? (
     <Subtitle>
-      {props.genres.split(',').slice(0,3).join(', ')}
+      {props.genres.split(',').slice(0,2).join(', ')}
     </Subtitle>
   ):null;
 

@@ -10,7 +10,11 @@ import { store } from '../../store';
 import NextOnRadar from './NextOnRadar'
 import RadarList from './RadarList'
 import agent from '../../agent'
-import { GET_RADAR_ITEMS, DELETE_FROM_RADAR} from '../../constants/actionType'
+import { 
+  GET_RADAR_ITEMS, 
+  DELETE_FROM_RADAR,
+  CHANGE_PAGE_TITLE
+} from '../../constants/actionType'
 
 const mapStateToProps = (state) => ({
   inProgress: state.common.inProgress,
@@ -23,6 +27,7 @@ const mapDispatchToProps = dispatch => ({
    dispatch({ type: GET_RADAR_ITEMS, payload}),
   deleteItem: (id, payload) =>
    dispatch({ type: DELETE_FROM_RADAR, id, payload}),
+  changePageTitle: pageTitle => dispatch({type: CHANGE_PAGE_TITLE, pageTitle})
 });
 
 
@@ -51,6 +56,7 @@ class Radar extends Component {
       store.dispatch(push('/register'))
     }
     const payload = agent.radar.items()
+    this.props.changePageTitle('Radar')
     this.props.getItems(payload)
   }
 

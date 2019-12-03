@@ -6,6 +6,7 @@ import {
   REGISTER,
   ASYNC_START,
   ASYNC_END,
+  CHANGE_PAGE_TITLE,
 } from '../constants/actionType'
 
 
@@ -16,7 +17,7 @@ const defaultState = {
   sideBarOptions: [
     {text:'Home', link: '#'},
     {text:'Radar', link: '/radar'},
-    {text:'Lineup', link: '#'},
+    {text:'Lineup', link: '/lineup'},
     {text:'Albums', link: '#'},
     {text:'Following', link: '#'},
   ]
@@ -44,6 +45,8 @@ export default (state = defaultState, action) => {
       return { ...state, redirectTo: '/register', token: null, currentUser: null };
     case REDIRECT:
       return { ...state, redirectTo: null };
+    case CHANGE_PAGE_TITLE:
+      return { ...state, currentPageTitle: action.pageTitle };
     case ASYNC_START:
       return { ...state, inProgress: true };
     case ASYNC_END:
