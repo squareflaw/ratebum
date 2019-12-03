@@ -193,8 +193,8 @@ AUTH_USER_MODEL = 'authentication.User'
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-NOSE_ARGS = ['--with-spec', '--spec-color', '--verbosity=2']
+# TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# NOSE_ARGS = ['--with-spec', '--spec-color', '--verbosity=2']
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

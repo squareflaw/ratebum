@@ -1,14 +1,11 @@
 # from itertools import chain
 import logging
-from requests.exceptions import HTTPError
 
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import (
-    PermissionDenied,
-    NotFound,
     ValidationError,
 )
 
@@ -17,7 +14,7 @@ from .models import Member
 from .renderers import MemberJSONRenderer
 from .serializers import MemberSerializer
 
-logger = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
 class LineupAPIView(APIView):
     permission_classes = (IsAuthenticated,)
