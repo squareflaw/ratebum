@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {Link } from "react-router-dom";
+import { push } from 'connected-react-router'
 
 import CenterCircularProgress from '../CenterCircularProgress'
 
+import { store } from '../../store';
 import NextOnRadar from './NextOnRadar'
 import RadarList from './RadarList'
 import agent from '../../agent'
@@ -12,7 +14,8 @@ import { GET_RADAR_ITEMS, DELETE_FROM_RADAR} from '../../constants/actionType'
 
 const mapStateToProps = (state) => ({
   inProgress: state.common.inProgress,
-  radarItems: state.music.radarItems
+  currentUser: state.common.currentUser,
+  radarItems: state.music.radarItems,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -44,6 +47,9 @@ const AddButton = styled.button`
 class Radar extends Component {
 
   componentDidMount(){
+    if (!this.props.currentUser) {
+      store.dispatch(push('/register'))
+    }
     const payload = agent.radar.items()
     this.props.getItems(payload)
   }

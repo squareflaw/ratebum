@@ -41,7 +41,7 @@ export default (state = defaultState, action) => {
         currentUser: action.error ? null : action.payload.user
       };
     case LOGOUT:
-      return { ...state, redirectTo: '/', token: null, currentUser: null };
+      return { ...state, redirectTo: '/register', token: null, currentUser: null };
     case REDIRECT:
       return { ...state, redirectTo: null };
     case ASYNC_START:
