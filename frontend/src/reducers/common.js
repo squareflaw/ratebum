@@ -14,11 +14,11 @@ const defaultState = {
   currentPageTitle: 'Ratebum',
   currentUser: null,
   sideBarOptions: [
-    'Home',
-    'Radar',
-    'Lineup',
-    'Albums',
-    'Following',
+    {text:'Home', link: '#'},
+    {text:'Radar', link: '/radar'},
+    {text:'Lineup', link: '#'},
+    {text:'Albums', link: '#'},
+    {text:'Following', link: '#'},
   ]
 }
 

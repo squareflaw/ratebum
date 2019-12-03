@@ -23,9 +23,9 @@ const Section = styled(Link)`
 
 const SideList = (props) => (
   <List>
-    {props.options.map((text, index) => (
-      <Item key={text}>     
-        <Section to="/radar">{text}</Section>
+    {props.options.map((section, index) => (
+      <Item key={section.text}>     
+        <Section to={section.link}>{section.text}</Section>
       </Item>
     ))}
   </List>
