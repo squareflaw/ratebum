@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import ItemButton from './ItemButton'
 
 const MainDIV = styled.li`
+  margin: 10px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
