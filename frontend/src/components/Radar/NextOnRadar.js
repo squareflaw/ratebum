@@ -6,14 +6,14 @@ import Menu from '../Menu'
 
 const MainDiv = styled.div`
   padding: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 60px;
   background: var(--primary-dark-color);
 `
 const Wrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
 `
 
@@ -26,10 +26,12 @@ const SectionTitle = styled.h3`
   margin-bottom: 20px;
   font-weight: lighter;
   text-align: center;
+  font-size: 1.4rem;
 `
 const ItemPic = styled.img`
-  width: 120px;
-  margin-right: 20px;
+  width: 30vw;
+  max-width: 300px;
+  margin-right: 4vw;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.25);
 `
 

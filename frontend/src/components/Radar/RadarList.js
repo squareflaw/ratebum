@@ -16,7 +16,7 @@ const List = styled.ul`
   width: 100%;
   margin-top: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 2rem;
 `
 
