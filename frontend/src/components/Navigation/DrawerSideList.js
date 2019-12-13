@@ -3,7 +3,7 @@ import {Link } from "react-router-dom";
 import styled from 'styled-components'
 
 const List = styled.ul`
-  padding: 20px 0;
+  padding: 1rem 0;
   border-bottom: 3px solid var(--primary-color);
 `
 const Item = styled.li`
@@ -14,7 +14,7 @@ const Item = styled.li`
 const Section = styled(Link)`
   margin: 10px;
   color: var(--white);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   text-decoration: none;
 
 `
