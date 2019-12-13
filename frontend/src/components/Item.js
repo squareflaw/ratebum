@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import ItemButton from './ItemButton'
 
 const MainDIV = styled.li`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 40px 0;
 `
 
 const ItemPic = styled.img`
@@ -58,36 +58,37 @@ const Item = (props) => {
     </Subtitle>
   ):null;
 
-  return(
+  return (
     <MainDIV>
       <div>
-        <ItemPic isArtist={props.isArtist} src={props.pic} alt="Item pic"/>
-        {props.isArtist?
-          (
-            <Info>
-              <Title href={props.spotify_url}>{props.artistName}</Title>
-              {secundaryInfo}
-            </Info>
-          ):(
-            <Info>
-              <Title href={props.spotify_url}>{props.albumName}</Title>
-              <Subtitle>
-                <BandName>{props.artistName}</BandName>{year}
-              </Subtitle>
-            </Info>
-          )
-        }    
+        <ItemPic isArtist={props.isArtist} src={props.pic} alt="Item pic" />
+        {props.isArtist ? (
+          <Info>
+            <Title href={props.spotify_url}>{props.artistName}</Title>
+            {secundaryInfo}
+          </Info>
+        ) : (
+          <Info>
+            <Title href={props.spotify_url}>{props.albumName}</Title>
+            <Subtitle>
+              <BandName>{props.artistName}</BandName>
+              {year}
+            </Subtitle>
+          </Info>
+        )}
       </div>
-      <ItemButton 
-        id={props.id} 
-        isInRadar={props.isInRadar} 
-        itemType={props.isArtist? 'artist': 'album'}
-        componentType={props.componentType} 
+      <ItemButton
+        id={props.id}
+        isInRadar={props.isInRadar}
+        itemType={props.isArtist ? "artist" : "album"}
+        componentType={props.componentType}
         addItem={props.addItem}
         deleteItem={props.deleteItem}
+        addLineupMember={props.addLineupMember}
+        deleteLineupMember={props.deleteLineupMember}
       />
     </MainDIV>
-  )
+  );
 }
 
 export default Item;

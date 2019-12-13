@@ -50,14 +50,14 @@ const mapDispatchToProps = dispatch => ({
 
 export class App extends Component {
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.redirectTo) {
       store.dispatch(push(nextProps.redirectTo));
       this.props.onRedirect();
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const token = window.localStorage.getItem('jwt');
     if (token) {
       agent.setToken(token); 
@@ -81,7 +81,7 @@ export class App extends Component {
     )
 
     return (
-      <div>
+      <React.Fragment>
       <MuiThemeProvider theme={theme}>
         <Navigation/>
         <Switch>         
@@ -93,7 +93,7 @@ export class App extends Component {
           <Route path='/register' component={Registration}/>
         </Switch> 
       </MuiThemeProvider>
-      </div>
+      </React.Fragment>
     ) 
   }
 }

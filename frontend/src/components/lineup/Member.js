@@ -3,10 +3,8 @@ import styled from 'styled-components'
 import ItemButton from '../ItemButton' 
 
 const MainDIV = styled.li`
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 40px 0;
 `
 
 const MemberContainer = styled.div`
@@ -61,8 +59,8 @@ const Member = (props) => {
             <ItemButton 
                 id={props.id} 
                 isInRadar={props.isInRadar} 
-                itemType={'artist'}
-                componentType={props.componentType} 
+                itemType='artist'
+                componentType='lineup' 
                 addItem={props.addItem}
                 deleteItem={props.deleteItem}
             />

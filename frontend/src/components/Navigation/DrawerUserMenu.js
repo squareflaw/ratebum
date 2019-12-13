@@ -16,8 +16,8 @@ const ProfilePic = styled.img`
   width: 50px;
   height: 50px;
   margin: 10px 0;
-  margin-right: 10px
-  border-radius: 50%
+  margin-right: 10px;
+  border-radius: 50%;
 `
 const Options = styled.div`
   display:flex;

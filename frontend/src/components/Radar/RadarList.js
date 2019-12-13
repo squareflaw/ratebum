@@ -4,18 +4,20 @@ import styled from 'styled-components'
 import OrderingSelector from './OrderingSelector'
 import Item from '../Item'
 
-const MainDiv = styled.div`
-  padding: 20px;
-`
 const Wrapper = styled.div`
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto;
 `
 const List = styled.ul`
-  padding: 20px 0;
+  width: 100%;
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 2rem;
 `
 
 const RadarList = (props) => {
@@ -41,14 +43,12 @@ const RadarList = (props) => {
   })
 
   return (
-    <MainDiv>
-      <Wrapper>
-        <OrderingSelector/>
-        <List>
-          {Items}
-        </List>
-      </Wrapper>
-    </MainDiv>
+    <Wrapper>
+      <OrderingSelector/>
+      <List>
+        {Items}
+      </List>
+    </Wrapper>
   )
 }
 

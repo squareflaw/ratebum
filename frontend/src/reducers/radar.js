@@ -22,11 +22,13 @@ export default (state = defaultState, action) => {
             };
         case DELETE_FROM_RADAR:
             return {
-                ...state,
-                radarItems: action.error ? state.radarItems : state.radarItems.filter(item => {
-                    return item.spotify_id !== action.id
-                })
-            }
+              ...state,
+              radarItems: action.error
+                ? state.radarItems
+                : state.radarItems.filter(item => {
+                    return item.spotify_id !== action.id;
+                  })
+            };
         default:
             return state;
     }

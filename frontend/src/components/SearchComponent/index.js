@@ -5,7 +5,9 @@ import styled from 'styled-components'
 import Results from './Results'
 import CenterCircularProgress from '../CenterCircularProgress'
 import agent from '../../agent'
-import { SEARCH, ADD_TO_RADAR } from '../../constants/actionType'
+import { 
+  SEARCH, 
+} from '../../constants/actionType'
 
 const mapStateToProps = (state) => ({
   inProgress: state.common.inProgress,
@@ -15,9 +17,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   onSearch: payload =>
-   dispatch({ type: SEARCH, payload}),     
-  addItem: payload =>
-   dispatch({ type: ADD_TO_RADAR, payload}),  
+   dispatch({ type: SEARCH, payload}), 
 });
 
 
@@ -56,11 +56,6 @@ class SearchComponent extends Component {
     this.props.onSearch(payload)
   }
 
-  handleAddItem = (id, itemType) => {
-    const payload = agent.radar.add(id, itemType)
-    this.props.addItem(payload)
-  }
-
   componentDidUpdate(prevProps, prevState) {
     this._input.focus();
   }
@@ -91,7 +86,6 @@ class SearchComponent extends Component {
               artists={artists} 
               albums={albums} 
               radarItems={radarItems? radarItems : []}  
-              addItem={this.handleAddItem}
             />
           )
         }

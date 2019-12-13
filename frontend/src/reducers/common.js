@@ -15,7 +15,7 @@ const defaultState = {
   currentPageTitle: 'Ratebum',
   currentUser: null,
   sideBarOptions: [
-    {text:'Home', link: '#'},
+    {text:'Home', link: '/'},
     {text:'Radar', link: '/radar'},
     {text:'Lineup', link: '/lineup'},
     {text:'Albums', link: '#'},

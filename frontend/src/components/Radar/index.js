@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import {Link } from "react-router-dom";
 import { push } from 'connected-react-router'
 
 import CenterCircularProgress from '../CenterCircularProgress'
@@ -15,10 +14,12 @@ import {
   DELETE_FROM_RADAR,
   CHANGE_PAGE_TITLE
 } from '../../constants/actionType'
+import PrimaryButton from '../PrimaryButton';
 
 const mapStateToProps = (state) => ({
   inProgress: state.common.inProgress,
   currentUser: state.common.currentUser,
+  currentPageTitle: state.common.currentPageTitle,
   radarItems: state.radar.radarItems,
 })
 
@@ -35,22 +36,8 @@ const MainDiv = styled.div`
   min-height: 100vh;
   background: var(--primary-color);
 `
-const AddButton = styled.button`
-  width: 60px;
-  min-width: 60px;
-  height: 60px;
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  background: var(--secundary-color);
-  border: none;
-  border-radius: 50px;
-  color: var(--full-white);
-  font-size: 3rem;
-`
 
 class Radar extends Component {
-
   componentDidMount(){
     if (!this.props.currentUser) {
       store.dispatch(push('/register'))
@@ -85,9 +72,7 @@ class Radar extends Component {
           items={radarItems? radarItems.slice(1) : []}
           deleteItem={this.handleDeleteItem}
         />
-        <Link to='/search'>
-          <AddButton>+</AddButton>
-        </Link>
+        <PrimaryButton url="/search" />
       </MainDiv>
     )
   }

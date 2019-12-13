@@ -2,26 +2,27 @@ import React from 'react';
 import styled from 'styled-components'
 
 import OrderingSelector from './OrderingSelector'
-import Item from './Member'
+import Member from './Member'
 
-const MainDiv = styled.div`
-  padding: 20px;
-`
 const Wrapper = styled.div`
+  max-width: 1000px;
+  padding: 20px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
 `
 const List = styled.ul`
-  padding: 20px 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 10px;
 `
 
 const LineupList = (props) => {
-  const members = props.members.map(member => {
+  const members = props.members? props.members.map(member => {
     return (
-      <Item
+      <Member
         key={member.spotify_id}
         id={member.spotify_id}
         isArtist // to show the artist's picture circular
@@ -32,17 +33,17 @@ const LineupList = (props) => {
         deleteItem={props.deleteItem}
       />
     )
-  })
+  }) : []
 
   return (
-    <MainDiv>
+    // <MainDiv>
       <Wrapper>
         <OrderingSelector/>
         <List>
           {members}
         </List>
       </Wrapper>
-    </MainDiv>
+    // </MainDiv>
   )
 }
 

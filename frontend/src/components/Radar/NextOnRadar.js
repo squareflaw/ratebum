@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 
 const HelperDiv = styled.div`
   display: flex;
-  align-items: flex-start
+  align-items: flex-start;
 `
 
 const SectionTitle = styled.h3`
@@ -79,7 +79,7 @@ const NextOnRadar = (props) => {
             }
           </HelperDiv>
           <Menu 
-            delete={() => props.deleteItem(props.item.spotify_id)}
+            deleteItem={() => props.deleteItem(props.item.spotify_id)}
           />
         </Wrapper>
       </MainDiv>
@@ -93,7 +93,7 @@ const ArtistItem = (props) => (
   <Info>
     <Title>{props.item.artist.name}</Title>
     <SubTitle>{
-      props.item.artist.genres.split(',').slice(0,3).join(', ')
+      props.item.artist.genres.split(',').slice(0,2).join(', ')
     }</SubTitle>
     <a href={props.item.artist.spotify_url}>
       <Button text='See on Spotify'/>

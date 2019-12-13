@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import { connect } from 'react-redux'
 import Header from './Header'
 import Drawer from './Drawer'
 import {LOGOUT} from '../../constants/actionType'
 
-const mapStateToProps = (state) => ({ 
+const mapStateToProps = state => ({ 
+  appName: state.common.appName,
   currentPageTitle: state.common.currentPageTitle,
   currentUser: state.common.currentUser,
   options: state.common.sideBarOptions,
-  // location: state.router.location.pathname
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -16,46 +16,38 @@ const mapDispatchToProps = dispatch => ({
     dispatch({type: LOGOUT}) 
 });
 
-class Navigation extends Component {
-  state = {
-    anchorEl: null,
-    isDrawerOpen: false 
-  };
+const Navigation = props => {
+  const [anchorEl, setAnchorEl] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
+  const handleMenu = () => setAnchorEl(true);
+  const handleClose = () => setAnchorEl(false);
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
+  const openDrawer = () => setIsDrawerOpen(true);
+  const closeDrawer = () => setIsDrawerOpen(false);
 
-  openDrawer = () => this.setState({...this.state, isDrawerOpen: true});
-  closeDrawer = () => this.setState({...this.state, isDrawerOpen: false});
-  
-  render() {
-    return (
-      <React.Fragment>
-        <Header
-          appName={this.props.appName}
-          currentPageTitle={this.props.currentPageTitle}
-          currentUser={this.props.currentUser}
-          handleMenu={this.handleMenu}
-          handleClose={this.handleClose}
-          openDrawer={this.openDrawer}
-          anchorEl={this.state.anchorEl}
-        />
-        <Drawer
-          isDrawerOpen={this.state.isDrawerOpen}
-          openDrawer={this.openDrawer}
-          closeDrawer={this.closeDrawer}
-          options={this.props.options}
-          currentUser={this.props.currentUser}
-          logout={this.props.onLogOut}
-        />
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <Header
+        appName={props.appName}
+        currentPageTitle={props.currentPageTitle}
+        currentUser={props.currentUser}
+        handleMenu={handleMenu}
+        handleClose={handleClose}
+        openDrawer={openDrawer}
+        anchorEl={anchorEl}
+      />
+      <Drawer
+        appName={props.appName}
+        isDrawerOpen={isDrawerOpen}
+        openDrawer={openDrawer}
+        closeDrawer={closeDrawer}
+        options={props.options}
+        currentUser={props.currentUser}
+        logout={props.onLogOut}
+      />
+    </React.Fragment>
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

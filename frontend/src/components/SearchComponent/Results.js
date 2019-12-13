@@ -51,6 +51,9 @@ const Results = (props) => {
       pic={artist.images.split(',').slice(-1)[0]} 
       componentType='searchItem'
       addItem={props.addItem}
+      deleteItem={props.deleteItem}
+      addLineupMember={props.addLineupMember}
+      deleteLineupMember={props.deleteLineupMember}
     />
   )):null
 
@@ -66,6 +69,7 @@ const Results = (props) => {
       pic={album.images.split(',').slice(-1)[0]} 
       componentType='searchItem'
       addItem={props.addItem}
+      deleteItem={props.deleteItem}
     />
   )):null
 

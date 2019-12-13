@@ -16,6 +16,12 @@ const HeaderBar = styled(AppBar)`
   color: #fff;
 `
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+  width: 100%;
+`
+
 const Title = styled.h6`
   font-family: var(--primary-font);
   font-weight: lighter;
@@ -42,19 +48,14 @@ const styles = {
   }
 };
 
-// function HideOnScroll(props) {
-//   const { children, window } = props;
-//   // const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
-//   return (
-//     <Slide appear={false} direction="down" in={!trigger}>
-//       {children}
-//     </Slide>
-//   );
-// }
-
 const Header = (props) => {
   const { classes } = props;
+
+  let titleLink;
+
+  if(props.currentPageTitle === 'Home') titleLink = '/'
+  if(props.currentPageTitle === 'Lineup') titleLink = '/lineup'
+  if(props.currentPageTitle === 'Radar') titleLink = '/radar'
 
   return (
     // <HideOnScroll>
@@ -68,9 +69,12 @@ const Header = (props) => {
           >
             <MenuIcon/>
           </IconButton>
-          <Title>
-            {props.currentPageTitle}
-          </Title>
+          <StyledLink to={titleLink}>
+            <Title>
+              {props.currentPageTitle}
+            </Title>
+          </StyledLink>
+          
           <Link to='/search'>
             <SearchIconStyled/>
           </Link>

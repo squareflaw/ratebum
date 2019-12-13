@@ -2,7 +2,8 @@ import superagentPromise from 'superagent-promise';
 import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
-const API_ROOT = 'http://192.168.42.232:8000/api'  
+// const API_ROOT = 'http://192.168.137.1:8000/api' 
+const API_ROOT = 'http://127.0.0.1:8000/api'
 // const API_ROOT = 'https://ratebum.herokuapp.com/api'
 
 
@@ -54,7 +55,7 @@ const lineup = {
   members: (order) => 
     requests.get(`/lineup?order=${order}`),
   add: (id) => 
-    requests.post('/lineup', {id: id}),
+    requests.post('/lineup/', {id: id}),
   delete: (id) =>
     requests.del(`/lineup/${id}`)
 }

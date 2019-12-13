@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { Link } from "react-router-dom";
 import { push } from 'connected-react-router'
 import CenterCircularProgress from '../CenterCircularProgress'
 
@@ -15,26 +14,13 @@ import {
     DELETE_FROM_LINEUP,
     CHANGE_PAGE_TITLE,
 } from '../../constants/actionType'
+import PrimaryButton from '../PrimaryButton'
 
 
 const MainDiv = styled.div`
-  min-height: 100vh;
-  background: var(--primary-color);
+  min-height:   100vh;
+  background:   var(--primary-color);
 `
-const AddButton = styled.button`
-  width: 60px;
-  min-width: 60px;
-  height: 60px;
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  background: var(--secundary-color);
-  border: none;
-  border-radius: 50px;
-  color: var(--full-white);
-  font-size: 3rem;
-`
-
 export class Lineup extends Component {
     state = {
         order: 'newest'
@@ -44,8 +30,11 @@ export class Lineup extends Component {
         if (!this.props.currentUser) {
             store.dispatch(push('/register'))
         }
-        const payload = agent.lineup.members(this.state.order)
+    }
+
+    UNSAFE_componentWillMount() {        
         this.props.changePageTitle('Lineup')
+        const payload = agent.lineup.members(this.state.order)
         this.props.getMembers(payload)
     }
 
@@ -75,9 +64,7 @@ export class Lineup extends Component {
                     members={lineupMembers? lineupMembers.slice(0) : []}
                     deleteItem={this.handleDeleteMember}
                 />
-                <Link to='/search'>
-                    <AddButton>+</AddButton>
-                </Link>
+                <PrimaryButton url="/search"/>
             </MainDiv>
         )
     }
@@ -86,6 +73,7 @@ export class Lineup extends Component {
 const mapStateToProps = (state) => ({
     inProgress: state.common.inProgress,
     currentUser: state.common.currentUser,
+    currentPageTitle: state.common.currentPageTitle,
     lineupMembers: state.lineup.lineupMembers,
 })
 
