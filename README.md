@@ -1,6 +1,6 @@
 # Ratebum
 
-it's a tool for keeps organized lists of albums you want to listen, artist you want to save, and your albums score. Powered by the Spotify API
+it's a tool for keeping organized lists of albums you want to listen, artist you want to save, and your albums score. Powered by the Spotify API
 
 ## Features
 
