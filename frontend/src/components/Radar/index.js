@@ -39,8 +39,10 @@ const MainDiv = styled.div`
 
 class Radar extends Component {
   componentDidMount(){
-    if (!this.props.currentUser) {
+    if (!this.props.currentUser.username) {
       store.dispatch(push('/register'))
+      window.localStorage.setItem('jwt','')
+      agent.setToken('')
     }
     const payload = agent.radar.items()
     this.props.changePageTitle('Radar')
