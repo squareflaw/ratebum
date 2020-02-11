@@ -17,7 +17,6 @@ const defaultState = {
   sideBarOptions: [
     {text:'Home', link: '/'},
     {text:'Radar', link: '/radar'},
-    {text:'Lineup', link: '/lineup'},
     {text:'Albums', link: '#'},
     {text:'Following', link: '#'},
   ]

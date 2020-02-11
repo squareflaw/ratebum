@@ -55,23 +55,22 @@ class Radar extends Component {
   }
 
   render() {
-    const radarItems = this.props.radarItems
 
-    if(this.props.inProgress) {
+    if(this.props.inProgress && !this.props.radarItems) {
       return <CenterCircularProgress/>
 
-    }else if(!radarItems){
+    }else if(!this.props.radarItems[0]){
       return <h5>No items in radar</h5>
     }
 
     return (
       <MainDiv>
         <NextOnRadar 
-          item={radarItems? radarItems[0] : {}}
+          item={this.props.radarItems? this.props.radarItems[0] : {}}
           deleteItem={this.handleDeleteItem}
         />
         <RadarList 
-          items={radarItems? radarItems.slice(1) : []}
+          items={this.props.radarItems? this.props.radarItems.slice(1) : []}
           deleteItem={this.handleDeleteItem}
         />
         <PrimaryButton url="/search" />

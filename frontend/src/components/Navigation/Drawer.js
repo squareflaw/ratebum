@@ -2,7 +2,6 @@ import React from 'react';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import styled from 'styled-components'
 
-import DrawerSideList from './DrawerSideList'
 import DrawerUserMenu from './DrawerUserMenu'
 import AppName from './AppName'
 
@@ -30,7 +29,6 @@ const Drawer = (props) => {
         onKeyDown={props.closeDrawer}
       >
         <AppName appName={props.appName}/>
-        <DrawerSideList  options={props.options}/>
         <DrawerUserMenu 
           currentUser={props.currentUser}
           logout={props.logout}

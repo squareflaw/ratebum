@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 
 import OrderingSelector from './OrderingSelector'
-import Item from '../Item'
+import Item from './Item'
 
 const Wrapper = styled.div`
   padding: 20px;

@@ -5,18 +5,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import ConfirmationDialog from './ConfirmationDialog'
+import ConfirmationDialog from '../ConfirmationDialog'
 
 export default function SimpleMenu(props) {
   const RADAR_DELETE_MESSAGE = "Delete item from your radar?";
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
-  const [confirmationMessage, setConfirmationMessage] = React.useState(
-    RADAR_DELETE_MESSAGE
-  );
 
   const handleClick = event => {
+    if (open) return
     setAnchorEl(event.currentTarget);
   };
 
@@ -24,14 +22,8 @@ export default function SimpleMenu(props) {
     setAnchorEl(null);
   };
 
-  const handleAddItem = () => {
-    handleClose()
-    props.addItem()
-  }
-
   const handleDeleteItem = () => {
     handleClose()
-    setConfirmationMessage(RADAR_DELETE_MESSAGE);
     handleClickOpenDialog()
   }
 
@@ -65,17 +57,15 @@ export default function SimpleMenu(props) {
           confirmLabel="Delete"
           onDeny={handleCloseDialog}
           denyLabel="Cancel"
-          title={confirmationMessage}
+          title={RADAR_DELETE_MESSAGE}
         />
       </Button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
-        keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
-      >
-        <MenuItem onClick={handleAddItem}>Add to Radar</MenuItem>
+      >s
         <MenuItem onClick={handleDeleteItem}>Remove from Radar</MenuItem>
       </Menu>
     </div>
