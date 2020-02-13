@@ -77,7 +77,7 @@ class SearchComponent extends Component {
           onChange={this.handleChange}
           onKeyDown={e => e.keyCode === 13? this.handleSubmit(e) : null}
         />
-        {this.props.inProgress && this.props.searchResults === null? (
+        {this.props.inProgress? (
             <CenterCircularProgress/>
           )
           :(

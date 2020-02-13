@@ -37,6 +37,7 @@ const RadarList = (props) => {
         spotify_url={item.album ? item.album.spotify_url : item.artist.spotify_url}
         year={item.album ? item.album.release_date.slice(0, 4) : ''}
         genres={!item.album ? item.artist.genres : ''}
+        date={item.created_at}
         deleteItem={props.deleteItem}
       />
     )

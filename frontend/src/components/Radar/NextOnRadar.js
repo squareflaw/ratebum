@@ -65,7 +65,8 @@ const NextOnRadar = (props) => {
       <MainDiv> 
         <SectionTitle>Next on your Radar:</SectionTitle>
         <Wrapper>
-          <HelperDiv>  
+          <HelperDiv>
+            <div>
             <ItemPic 
               src={props.item.album? 
                 props.item.album.image_url.split(',')[1]
@@ -73,7 +74,11 @@ const NextOnRadar = (props) => {
                 props.item.artist.image_url.split(',')[1]
               } 
               alt="Item pic"
-            />
+              />
+              <SubTitle>
+                Added {props.item.created_at.match(/([^T]+)/)[0].split("-").reverse().join("/")}
+              </SubTitle>
+            </div>  
             {props.item.album ? 
               <AlbumItem item={props.item}/> 
               : 
@@ -84,6 +89,7 @@ const NextOnRadar = (props) => {
             deleteItem={() => props.deleteItem(props.item.spotify_id)}
           />
         </Wrapper>
+        <SubTitle style={{textAlign:'center'}}>{props.itemsCount} items on your radar</SubTitle>
       </MainDiv>
     )    
   }else {

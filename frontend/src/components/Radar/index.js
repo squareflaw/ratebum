@@ -67,6 +67,7 @@ class Radar extends Component {
       <MainDiv>
         <NextOnRadar 
           item={this.props.radarItems? this.props.radarItems[0] : {}}
+          itemsCount={this.props.radarItems.length}
           deleteItem={this.handleDeleteItem}
         />
         <RadarList 

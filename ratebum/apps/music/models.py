@@ -52,7 +52,7 @@ class Album(TimestampedModel):
 class Track(models.Model):
     name = models.CharField(max_length=80)
     spotify_id = models.CharField(max_length=500, unique=True)
-    preview_url = models.URLField(max_length=500)
+    preview_url = models.URLField(max_length=500, null=True)
 
     album = models.ForeignKey(
         'Album',

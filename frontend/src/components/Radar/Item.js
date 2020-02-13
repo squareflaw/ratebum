@@ -43,6 +43,13 @@ const Subtitle = styled.p`
   font-size: 1rem;
   margin-bottom: 5px;
 `
+const Date = styled.p`
+  font-family: var(--secundary-font);
+  color: var(--semi-white);
+  font-weight: lighter;
+  font-size: .8rem;
+  padding-bottom: 5px;
+`
 
 const BandName = styled.b`
   color: var(--white);
@@ -51,7 +58,7 @@ const BandName = styled.b`
 
 const Item = (props) => {
 
-  const year = props.year? ` - ${props.year}`: ''
+  const year = props.year? `${props.year}`: ''
 
   const secundaryInfo = props.genres? (
     <Subtitle>
@@ -67,14 +74,22 @@ const Item = (props) => {
           <Info>
             <Title href={props.spotify_url}>{props.artistName}</Title>
             {secundaryInfo}
+            <Date>
+              {props.date.match(/([^T]+)/)[0].split("-").reverse().join("/")}
+            </Date>
           </Info>
         ) : (
           <Info>
             <Title href={props.spotify_url}>{props.albumName}</Title>
             <Subtitle>
               <BandName>{props.artistName}</BandName>
-              {year}
             </Subtitle>
+            <Subtitle>
+            {year}
+            </Subtitle>
+            <Date>
+              Added {props.date.match(/([^T]+)/)[0].split("-").reverse().join("/")}
+            </Date>
           </Info>
         )}
       </div>

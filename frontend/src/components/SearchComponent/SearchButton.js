@@ -8,7 +8,6 @@ import {
     ADD_TO_RADAR,
     DELETE_FROM_RADAR
 } from '../../constants/actionType'
-import CenterCircularProgress from '../CenterCircularProgress'
 
 export const SearchButton = (props) => {
     const [open, setOpen] = React.useState(false);
@@ -43,10 +42,6 @@ export const SearchButton = (props) => {
         setOpen(false)
     }
 
-    if (props.inProgress) {
-        return <CenterCircularProgress/>
-    }
-
     if(props.isInRadar){
         return (
             <React.Fragment>      
@@ -79,7 +74,6 @@ export const SearchButton = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    inProgress: state.common.inProgress,
 })
 
 const mapDispatchToProps = dispatch => ({
