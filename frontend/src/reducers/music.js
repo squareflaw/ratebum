@@ -2,7 +2,7 @@ import {
   SEARCH,
 } from '../constants/actionType'; 
 
-export default (state = {}, action) => {
+export default (state = {searchResults:null}, action) => {
   switch (action.type) {
     case SEARCH:
       return {

@@ -8,10 +8,11 @@ import {
     ADD_TO_RADAR,
     DELETE_FROM_RADAR
 } from '../../constants/actionType'
+import CenterCircularProgress from '../CenterCircularProgress'
 
 export const SearchButton = (props) => {
     const [open, setOpen] = React.useState(false);
-    const [isButtonDisable, setIsButtonDisable] = React.useState(props.isInRadar);
+    const [isButtonDisable, setIsButtonDisable] = React.useState(true);
     const [disabledButtonText, setDisabledButtonText] = React.useState('Saved');
 
     const handleAddItem = (id, itemType) => {
@@ -25,7 +26,7 @@ export const SearchButton = (props) => {
     }
     const handleOnMouseOut = () =>{
         setDisabledButtonText('Saved')
-        setIsButtonDisable(props.isInRadar)
+        setIsButtonDisable(true)
     }
 
     const handleClickOpenDialog = () => {
@@ -39,6 +40,11 @@ export const SearchButton = (props) => {
     const handleDeleteConfirmation = (id) => {
         const payload = agent.radar.delete(id)
         props.deleteItem(id, payload)
+        setOpen(false)
+    }
+
+    if (props.inProgress) {
+        return <CenterCircularProgress/>
     }
 
     if(props.isInRadar){
@@ -73,7 +79,7 @@ export const SearchButton = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    
+    inProgress: state.common.inProgress,
 })
 
 const mapDispatchToProps = dispatch => ({
