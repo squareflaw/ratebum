@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import ItemButton from './ItemButton'
+import SearchButton from './SearchButton'
 
 const MainDIV = styled.li`
   margin: 10px 0;
@@ -78,15 +78,11 @@ const Item = (props) => {
           </Info>
         )}
       </div>
-      <ItemButton
+      <SearchButton
         id={props.id}
         isInRadar={props.isInRadar}
         itemType={props.isArtist ? "artist" : "album"}
         componentType={props.componentType}
-        addItem={props.addItem}
-        deleteItem={props.deleteItem}
-        addLineupMember={props.addLineupMember}
-        deleteLineupMember={props.deleteLineupMember}
       />
     </MainDIV>
   );

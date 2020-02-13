@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-import Item from '../Item'
+import Item from './Item'
 
 const MainDiv = styled.div`
   padding: 50px 20px;
@@ -50,10 +50,6 @@ const Results = (props) => {
       artistName={artist.name}
       pic={artist.images.split(',').slice(-1)[0]} 
       componentType='searchItem'
-      addItem={props.addItem}
-      deleteItem={props.deleteItem}
-      addLineupMember={props.addLineupMember}
-      deleteLineupMember={props.deleteLineupMember}
     />
   )):null
 
@@ -68,8 +64,6 @@ const Results = (props) => {
       year={album.release_date}
       pic={album.images.split(',').slice(-1)[0]} 
       componentType='searchItem'
-      addItem={props.addItem}
-      deleteItem={props.deleteItem}
     />
   )):null
 

@@ -12,7 +12,7 @@ import {
 const mapStateToProps = (state) => ({
   inProgress: state.common.inProgress,
   searchResults: state.music.searchResults,
-  radarItems: state.music.radarItems,
+  radarItems: state.radar.radarItems,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -62,7 +62,6 @@ class SearchComponent extends Component {
 
   render() {
     const searchResults = this.props.searchResults
-    const radarItems = this.props.radarItems
     const artists = searchResults? searchResults.artists.slice(0,3): null
     const albums = searchResults? searchResults.albums: null
 
@@ -85,7 +84,7 @@ class SearchComponent extends Component {
             <Results 
               artists={artists} 
               albums={albums} 
-              radarItems={radarItems? radarItems : []}  
+              radarItems={this.props.radarItems}  
             />
           )
         }

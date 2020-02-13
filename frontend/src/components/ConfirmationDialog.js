@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function AlertDialog(props) {
   return (
-    <div>
+    <div style={{ position:'absolute'}}>
       <Dialog
         open={props.open}
         onClose={props.handleClose}
