@@ -5,7 +5,8 @@ import {
 } from '../constants/actionType';
 
 const defaultState = {
-    radarItems: []
+    radarItems: [],
+    page: 1,
 }
 
 export default (state = defaultState, action) => {
@@ -13,7 +14,9 @@ export default (state = defaultState, action) => {
         case GET_RADAR_ITEMS:
             return {
                 ...state,
-                radarItems: action.error ? [] : action.payload.radarItems
+                radarItems: action.error? state.radarItems : state.radarItems.concat(action.payload.radarItems),
+                totalCount: action.error? 0 : action.payload.totalCount,
+                page: state.page + 1
             };
         case ADD_TO_RADAR:
             return {

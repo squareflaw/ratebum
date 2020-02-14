@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const CenterDiv = styled.div`
-  min-height: 100vh;
+  min-height:  ${props => props.small? '0;' : '100vh;'};
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:  ${props => props.small ? 'flex-start;' : 'center;'};
 `
 
 const Progress = styled(CircularProgress)`
@@ -14,7 +14,7 @@ const Progress = styled(CircularProgress)`
 `
 
 const CenterCircularProgress = (props) => (
-  <CenterDiv> 
+  <CenterDiv small={props.small}> 
     <Progress color='inherit'/>
   </CenterDiv>
 );

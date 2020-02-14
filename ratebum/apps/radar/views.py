@@ -8,6 +8,8 @@ from rest_framework.exceptions import (
     ValidationError,
 )
 
+from django.core.paginator import Paginator, EmptyPage
+
 from ratebum.apps.music.models import get_music_model_instance
 from .models import create_new_radar_item
 from .renderers import RadarItemJSONRenderer
@@ -17,15 +19,26 @@ from .serializers import RadarItemSerializer
 
 class RadarAPIView(APIView):
     permission_classes = (IsAuthenticated,)
-    renderer_classes = (RadarItemJSONRenderer,)
+    # renderer_classes = (RadarItemJSONRenderer,)
     serializer_class = RadarItemSerializer
 
     def get(self, request):
         radar_items = request.user.profile.radar_items.all().reverse()
-        radar_items_serializer = RadarItemSerializer(radar_items, many=True)
-        return Response(radar_items_serializer.data, status=status.HTTP_200_OK)
+        items_total_count = radar_items.count()
+        page_number = self.request.query_params.get('p', 1)
+        paginator = Paginator(radar_items, 20)
+        try:
+            radar_items_serializer = RadarItemSerializer(paginator.page(page_number), many=True)
+        except EmptyPage:
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
-    def post(self, request):
+        return Response({
+                "radarItems":radar_items_serializer.data , 
+                "totalCount":items_total_count
+            }, status=status.HTTP_200_OK
+        )
+
+    def post(self, request): 
         spotify_id = request.data.get('id')
         item_type = request.data.get('itemType')
         user = request.user.profile
@@ -38,9 +51,9 @@ class RadarAPIView(APIView):
         music_model_instance = get_music_model_instance(spotify_id, item_type)
         radar_item = create_new_radar_item(music_model_instance, item_type, user)
         radar_item_serializer = RadarItemSerializer(radar_item)
-        return Response(
-            radar_item_serializer.data,
-            status=status.HTTP_201_CREATED
+        return Response({
+                "radarItem":radar_item_serializer.data
+            }, status=status.HTTP_201_CREATED
         )
 
     def delete(self, request, spotify_id):

@@ -43,11 +43,11 @@ const search = query => {
 }
 
 const radar = {
-  items: () => 
-    requests.get(`/radar`),
+  items: page => 
+    requests.get(`/radar?p=${page}`),
   add: (id, itemType) => 
     requests.post('/radar', {id: id, itemType: itemType}),
-  delete: (id) =>
+  delete: id =>
     requests.del(`/radar/${id}`)
 }
 

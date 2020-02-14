@@ -40,7 +40,7 @@ class RadarViewTestCase(APITestCase):
         self.assertEqual(
             self.album_response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(
-            self.album_response.data['album']['spotify_id'],
+            self.album_response.data['radarItem']['album']['spotify_id'],
             self.album_id)
 
     def test_should_find_new_album_in_profile_radar(self):
@@ -52,7 +52,7 @@ class RadarViewTestCase(APITestCase):
         self.assertEqual(
             self.artist_response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(
-            self.artist_response.data['artist']['spotify_id'], 
+            self.artist_response.data['radarItem']['artist']['spotify_id'], 
             self.artist_id)
 
 
@@ -70,7 +70,7 @@ class RadarViewTestCase(APITestCase):
         response = self.client.get(reverse(self.urlName))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIsNotNone(
-            response.data[0]['artist']['spotify_id'])
+            response.data['radarItems'][0]['artist']['spotify_id'])
 
     def test_should_delete_radar_item(self):
         urlName = 'radar:radarDeleteItem'

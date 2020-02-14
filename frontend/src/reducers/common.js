@@ -12,14 +12,7 @@ import {
 
 const defaultState = {
   appName: 'Ratebum',
-  currentPageTitle: 'Ratebum',
   currentUser: null,
-  sideBarOptions: [
-    {text:'Home', link: '/'},
-    {text:'Radar', link: '/radar'},
-    {text:'Albums', link: '#'},
-    {text:'Following', link: '#'},
-  ]
 }
 
 export default (state = defaultState, action) => {
