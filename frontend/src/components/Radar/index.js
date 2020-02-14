@@ -39,22 +39,19 @@ const MainDiv = styled.div`
   background: var(--primary-color);
 `
 
-const CircularAlignCenterProgress = styled.div`
+const CenterText = styled.h5`
   width: 100%;
-  display: flex;
-  justify-content: center;
+  margin-top: 100px;
+  font-size: 2rem;
+  text-align: center;
 `
 
 class Radar extends Component {
-  state = {
-    order: 'old'
-  }
-
   componentDidMount(){
     if (!this.props.currentUser) {
-      store.dispatch(push('/register'))
       window.localStorage.setItem('jwt','')
       agent.setToken('')
+      store.dispatch(push('/register'))
     }
 
     if (this.props.page === 1) {
@@ -66,14 +63,6 @@ class Radar extends Component {
 
   componentWillUnmount(){
     window.removeEventListener('scroll', this.handleScroll);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.order !== this.props.order) {
-      this.setState({
-        order: this.props.order
-      });
-    }
   }
 
   
@@ -91,31 +80,37 @@ class Radar extends Component {
   }
 
   render() {
-    if(this.props.inProgress && !this.props.radarItems) {
-      return <CenterCircularProgress/>
-
-    }else if(!this.props.radarItems[0]){
-      return <h5>No items in radar</h5>
+    
+    if (this.props.radarItems.length === 0 && !this.props.inProgress){
+      return (
+        <React.Fragment>
+          <CenterText>Start adding artist or albums</CenterText>
+          <PrimaryButton url="/search" />
+        </React.Fragment>
+      )
     }
 
-    return (
-      <MainDiv onScroll={this.handleScroll}>
-        <NextOnRadar 
-          item={this.props.radarItems? this.props.radarItems[0] : {}}
-          itemsCount={this.props.totalCount}
-          deleteItem={this.handleDeleteItem}
-        />
-        <RadarList 
-          items={this.props.radarItems? this.props.radarItems.slice(1) : []}
-          deleteItem={this.handleDeleteItem}
-        />
-        {this.props.inProgress? (
-            <CenterCircularProgress small/>
-          ):null
-        }
-        <PrimaryButton url="/search" />
-      </MainDiv>
-    )
+    if(this.props.radarItems[0]){
+      return (
+        <MainDiv onScroll={this.handleScroll}>
+          <NextOnRadar 
+            item={this.props.radarItems? this.props.radarItems[0] : {}}
+            itemsCount={this.props.totalCount}
+            deleteItem={this.handleDeleteItem}
+          />
+          <RadarList 
+            items={this.props.radarItems? this.props.radarItems.slice(1) : []}
+            deleteItem={this.handleDeleteItem}
+          />
+          {this.props.inProgress? (
+              <CenterCircularProgress small/>
+            ):null
+          }
+          <PrimaryButton url="/search" />
+        </MainDiv>
+      )
+    }
+    return <CenterCircularProgress />
   }
 }
 

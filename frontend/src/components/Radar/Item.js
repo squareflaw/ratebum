@@ -87,7 +87,7 @@ const Item = (props) => {
             <Title href={props.spotify_url}><Position>{props.position}:</Position> {props.artistName}</Title>
             {secundaryInfo}
             <Date>
-              {props.date.match(/([^T]+)/)[0].split("-").reverse().join("/")}
+              Added {props.date.match(/([^T]+)/)[0].split("-").reverse().join("/")}
             </Date>
           </Info>
         ) : (

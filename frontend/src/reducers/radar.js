@@ -3,6 +3,7 @@ import {
     ADD_TO_RADAR,
     DELETE_FROM_RADAR,
     CHANGE_ORDER,
+    LOGOUT,
 } from '../constants/actionType';
 
 const defaultState = {
@@ -42,6 +43,8 @@ export default (state = defaultState, action) => {
                         return item.spotify_id !== action.id;
                     })
             };
+        case LOGOUT:
+            return { ...state, radarItems: [], page: 1};
         default:
             return state;
     }
