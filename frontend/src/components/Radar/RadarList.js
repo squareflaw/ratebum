@@ -21,11 +21,12 @@ const List = styled.ul`
 `
 
 const RadarList = (props) => {
-  const Items = props.items.map(item => {
+  const Items = props.items.map((item, index) => {
     return (
       <Item
         key={item.spotify_id}
         id={item.spotify_id}
+        position={index + 2}
         isArtist={!item.album}
         pic={item.album ? 
           item.album.image_url.split(',')[1]

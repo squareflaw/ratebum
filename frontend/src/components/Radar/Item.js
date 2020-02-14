@@ -10,12 +10,17 @@ const MainDIV = styled.li`
   align-items: flex-start;
 `
 
+const ItemPicFrame = styled.div`
+  display:flex;
+  align-items: center;
+`
 const ItemPic = styled.img`
   display:block;
   float:left;
   max-width: 100px;
   max-height: 100px;
   margin-right: 20px;
+  margin-left: 5px;
   border-radius: ${props => props.isArtist? '50%;': '0;'}
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.25);
 `
@@ -35,6 +40,13 @@ const Title = styled.a`
   color: var(--full-white);
   margin-bottom: 10px;
   text-decoration: none;
+`
+const Position = styled.b`
+  font-family: var(--secundary-font);
+  color: var(--semi-white);
+  font-weight: lighter;
+  font-size: 1rem;
+  margin-bottom: 5px;
 `
 const Subtitle = styled.p`
   font-family: var(--secundary-font);
@@ -72,7 +84,7 @@ const Item = (props) => {
         <ItemPic isArtist={props.isArtist} src={props.pic} alt="Item pic" />
         {props.isArtist ? (
           <Info>
-            <Title href={props.spotify_url}>{props.artistName}</Title>
+            <Title href={props.spotify_url}><Position>{props.position}:</Position> {props.artistName}</Title>
             {secundaryInfo}
             <Date>
               {props.date.match(/([^T]+)/)[0].split("-").reverse().join("/")}
@@ -80,7 +92,7 @@ const Item = (props) => {
           </Info>
         ) : (
           <Info>
-            <Title href={props.spotify_url}>{props.albumName}</Title>
+            <Title href={props.spotify_url}><Position>{props.position}:</Position> {props.albumName}</Title>
             <Subtitle>
               <BandName>{props.artistName}</BandName>
             </Subtitle>
