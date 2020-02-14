@@ -51,12 +51,6 @@ const styles = {
 const Header = (props) => {
   const { classes } = props;
 
-  let titleLink;
-
-  if(props.currentPageTitle === 'Home') titleLink = '/'
-  if(props.currentPageTitle === 'Lineup') titleLink = '/lineup'
-  if(props.currentPageTitle === 'Radar') titleLink = '/radar'
-
   return (
     // <HideOnScroll>
       <HeaderBar position='static' color="primary">
@@ -69,9 +63,9 @@ const Header = (props) => {
           >
             <MenuIcon/>
           </IconButton>
-          <StyledLink to={titleLink}>
+          <StyledLink to={'/'}>
             <Title>
-              {props.currentPageTitle}
+              Radar
             </Title>
           </StyledLink>
           

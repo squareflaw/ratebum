@@ -83,8 +83,7 @@ export class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Navigation/>
         <Switch>         
-          <Route exact path="/" component={Radar} />          
-          <Route path="/radar" component={Radar} />           
+          <Route exact path="/" component={Radar} />         
           <Route path="/search" component={SearchComponent} />         
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Registration}/>
