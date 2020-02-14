@@ -10,10 +10,6 @@ const MainDIV = styled.li`
   align-items: flex-start;
 `
 
-const ItemPicFrame = styled.div`
-  display:flex;
-  align-items: center;
-`
 const ItemPic = styled.img`
   display:block;
   float:left;

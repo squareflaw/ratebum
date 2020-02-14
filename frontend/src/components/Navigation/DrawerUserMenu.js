@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link } from "react-router-dom";
 import styled from 'styled-components'
-import SettingsApplicationsIcon from '@material-ui/icons/SettingsApplications';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const Wrapper = styled.div`

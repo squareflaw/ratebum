@@ -12,10 +12,8 @@ import agent from '../../agent'
 import { 
   GET_RADAR_ITEMS, 
   DELETE_FROM_RADAR,
-  CHANGE_PAGE_TITLE
 } from '../../constants/actionType'
 import PrimaryButton from '../PrimaryButton';
-import { CircularProgress } from '@material-ui/core';
 
 const mapStateToProps = (state) => ({
   inProgress: state.common.inProgress,
