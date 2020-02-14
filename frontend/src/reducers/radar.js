@@ -2,11 +2,13 @@ import {
     GET_RADAR_ITEMS,
     ADD_TO_RADAR,
     DELETE_FROM_RADAR,
+    CHANGE_ORDER,
 } from '../constants/actionType';
 
 const defaultState = {
     radarItems: [],
     page: 1,
+    order: 'old',
 }
 
 export default (state = defaultState, action) => {
@@ -16,7 +18,14 @@ export default (state = defaultState, action) => {
                 ...state,
                 radarItems: action.error? state.radarItems : state.radarItems.concat(action.payload.radarItems),
                 totalCount: action.error? 0 : action.payload.totalCount,
-                page: state.page + 1
+                page: state.page + 1,
+            };
+        case CHANGE_ORDER:
+            return {
+                ...state,
+                order: action.order,
+                radarItems: [],
+                page: 1
             };
         case ADD_TO_RADAR:
             return {

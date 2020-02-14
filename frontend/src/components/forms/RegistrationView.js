@@ -67,8 +67,8 @@ function RegistrationView(props) {
     <main className={classes.main}>
       <CssBaseline />
       <Paper className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Sign Up
+        <Typography component="p" variant="h5" align='center'>
+          Save the music you want to listen to later
         </Typography>
         <form className={classes.form} onSubmit={props.handleSubmit}>
           <FormControl 

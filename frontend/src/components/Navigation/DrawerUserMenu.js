@@ -50,7 +50,6 @@ const DrawerUserMenu = (props) => {
           <p>{props.currentUser.username}</p>      
         </Avatar>
         <Options>
-          <Item><SettingsApplicationsIcon/>Settings</Item>
           <Item onClick={props.logout}><ExitToAppIcon/>Logout</Item>      
         </Options>
       </Wrapper>

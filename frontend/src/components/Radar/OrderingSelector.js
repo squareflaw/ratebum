@@ -13,8 +13,8 @@ const StyledSelect = styled.select`
 
 const OrderingSelector = (props) => (
   <StyledSelect name="select">
-    <option value="recent" defaultValue>Recent</option> 
-    <option value="oldest">Oldest</option>
+    <option value="old" defaultValue>Queue</option> 
+    <option value="new">Recent</option>
   </StyledSelect>
 );
 

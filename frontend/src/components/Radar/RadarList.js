@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
 
-import OrderingSelector from './OrderingSelector'
 import Item from './Item'
+import OrderSwitch from './OrderSwitch';
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -45,7 +45,7 @@ const RadarList = (props) => {
 
   return (
     <Wrapper>
-      <OrderingSelector/>
+      <OrderSwitch/>
       <List>
         {Items}
       </List>

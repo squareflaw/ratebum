@@ -23,7 +23,12 @@ class RadarAPIView(APIView):
     serializer_class = RadarItemSerializer
 
     def get(self, request):
-        radar_items = request.user.profile.radar_items.all().reverse()
+        order = self.request.query_params.get('o', 'old')
+        if order == 'new':
+            radar_items = request.user.profile.radar_items.all()
+        else:
+            radar_items = request.user.profile.radar_items.all().reverse()
+            
         items_total_count = radar_items.count()
         page_number = self.request.query_params.get('p', 1)
         paginator = Paginator(radar_items, 20)

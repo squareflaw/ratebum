@@ -23,6 +23,7 @@ const mapStateToProps = (state) => ({
   radarItems: state.radar.radarItems,
   totalCount: state.radar.totalCount,
   page: state.radar.page,
+  order: state.radar.order,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -45,6 +46,9 @@ const CircularAlignCenterProgress = styled.div`
 `
 
 class Radar extends Component {
+  state = {
+    order: 'old'
+  }
 
   componentDidMount(){
     if (!this.props.currentUser) {
@@ -54,7 +58,7 @@ class Radar extends Component {
     }
 
     if (this.props.page === 1) {
-      const payload = agent.radar.items(this.props.page)
+      const payload = agent.radar.items(this.props.page, this.props.order)
       this.props.getItems(payload)   
     }
     window.addEventListener('scroll', this.handleScroll);
@@ -64,11 +68,19 @@ class Radar extends Component {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.order !== this.props.order) {
+      this.setState({
+        order: this.props.order
+      });
+    }
+  }
+
   
   handleScroll = e => {
     const bottom = e.target.scrollingElement.scrollHeight - e.target.scrollingElement.scrollTop === e.target.scrollingElement.clientHeight
     if (bottom && this.props.totalCount+20 > this.props.page*20) {
-      const payload = agent.radar.items(this.props.page)
+      const payload = agent.radar.items(this.props.page, this.props.order)
       this.props.getItems(payload)
     }
   }
