@@ -30,18 +30,18 @@ const Info = styled.div`
 `
 
 const Title = styled.a`
+  padding: 5px;
   font-family: var(--primary-font);
   font-weight: bold;
   font-size: 1rem;
-  color: var(--full-white);
+  background-color: var(--white);
+  color: var(--black); 
   margin-bottom: 10px;
   text-decoration: none;
 `
 const Position = styled.b`
   font-family: var(--secundary-font);
-  color: var(--semi-white);
-  font-weight: lighter;
-  font-size: 1rem;
+  color: var(--secundary-color);
   margin-bottom: 5px;
 `
 const Subtitle = styled.p`

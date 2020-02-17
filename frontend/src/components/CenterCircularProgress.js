@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 const CenterDiv = styled.div`
+  padding: 40px;
   min-height:  ${props => props.small? '0;' : '100vh;'};
   display: flex;
   justify-content: center;
