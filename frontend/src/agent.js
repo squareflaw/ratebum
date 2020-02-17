@@ -2,9 +2,8 @@ import superagentPromise from 'superagent-promise';
 import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
-// const API_ROOT = 'http://192.168.137.1:8000/api' 
-const API_ROOT = 'http://127.0.0.1:8000/api'
-// const API_ROOT = 'https://ratebum.herokuapp.com/api'
+// const API_ROOT = 'http://127.0.0.1:8000/api'
+const API_ROOT = 'https://ratebum.herokuapp.com/api'
 
 
 let token = null;
