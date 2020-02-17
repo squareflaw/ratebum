@@ -66,7 +66,7 @@ const NextOnRadar = (props) => {
         <SectionTitle>Next on your Radar:</SectionTitle>
         <Wrapper>
           <HelperDiv>
-            <div style={{ marginRight: '4vw'}}>
+            <div style={{ marginRight: '10px'}}>
             <ItemPic 
               src={props.item.album? 
                 props.item.album.image_url.split(',')[1]
