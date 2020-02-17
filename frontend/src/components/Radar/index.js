@@ -46,7 +46,7 @@ const CenterText = styled.h5`
 
 class Radar extends Component {
   componentDidMount(){
-    if (!this.props.currentUser) {
+    if (!this.props.currentUser && !this.props.inProgress) {
       window.localStorage.setItem('jwt','')
       agent.setToken('')
       store.dispatch(push('/register'))
@@ -66,7 +66,7 @@ class Radar extends Component {
   
   handleScroll = e => {
     const bottom = e.target.scrollingElement.scrollHeight - e.target.scrollingElement.scrollTop === e.target.scrollingElement.clientHeight
-    if (bottom && this.props.totalCount+20 > this.props.page*20) {
+    if (bottom && this.props.totalCount+20 > this.props.page*20 && !this.props.inProgress) {
       const payload = agent.radar.items(this.props.page, this.props.order)
       this.props.getItems(payload)
     }
