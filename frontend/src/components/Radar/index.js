@@ -65,7 +65,7 @@ class Radar extends Component {
 
   
   handleScroll = e => {
-    const bottom = e.target.scrollingElement.scrollHeight - e.target.scrollingElement.scrollTop === e.target.scrollingElement.clientHeight
+    const bottom = e.target.scrollingElement.scrollHeight - e.target.scrollingElement.scrollTop < e.target.scrollingElement.clientHeight + 100
     if (bottom && this.props.totalCount+20 > this.props.page*20 && !this.props.inProgress) {
       const payload = agent.radar.items(this.props.page, this.props.order)
       this.props.getItems(payload)
