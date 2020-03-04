@@ -27,6 +27,12 @@ const SectionTitle = styled.h3`
   text-align: center;
   font-size: 1.4rem;
 `
+const ItemPicContainer = styled.div`
+  margin-right: 10px;
+  @media (min-width: 768px) {
+    margin-right: 3vw;
+  }
+`
 const ItemPic = styled.img`
   width: 30vw;
   max-width: 300px;
@@ -56,6 +62,21 @@ const SubTitle = styled.p`
   font-size: 1rem;
   margin-bottom: 5px;
 `
+const SubTitleDate = styled.p`
+  font-family: var(--secundary-font);
+  color: var(--gray);
+  font-weight: lighter;
+  font-size: .8rem;
+  margin-bottom: 5px;
+`
+
+const TotalNumber = styled.b`
+  background: var(--full-white);
+  color: var(--secundary-color);
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 5px;
+`
 
 
 const NextOnRadar = (props) => {
@@ -66,7 +87,7 @@ const NextOnRadar = (props) => {
         <SectionTitle>Next on your Radar:</SectionTitle>
         <Wrapper>
           <HelperDiv>
-            <div style={{ marginRight: '10px'}}>
+            <ItemPicContainer>
             <ItemPic 
               src={props.item.album? 
                 props.item.album.image_url.split(',')[1]
@@ -75,10 +96,10 @@ const NextOnRadar = (props) => {
               } 
               alt="Item pic"
               />
-              <SubTitle>
+              <SubTitleDate>
                 Added {props.item.created_at.match(/([^T]+)/)[0].split("-").reverse().join("/")}
-              </SubTitle>
-            </div>  
+              </SubTitleDate>
+            </ItemPicContainer>  
             {props.item.album ? 
               <AlbumItem item={props.item}/> 
               : 
@@ -89,7 +110,7 @@ const NextOnRadar = (props) => {
             deleteItem={() => props.deleteItem(props.item.spotify_id)}
           />
         </Wrapper>
-        <SubTitle style={{textAlign:'center', padding: '20px'}}>{props.itemsCount} items on your radar</SubTitle>
+        <SubTitle style={{ textAlign: 'center', padding: '20px' }}><TotalNumber>{props.itemsCount}</TotalNumber> items on your radar</SubTitle>
       </MainDiv>
     )    
   }else {
