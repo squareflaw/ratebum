@@ -8,9 +8,6 @@ services:
 install:
   - pip install -r requirements.txt
 
-before_script:
-  - psql -c "CREATE DATABASE postgres;" -U postgres
-  - python manage.py migrate --noinput
 
 # command to run tests
 script:
