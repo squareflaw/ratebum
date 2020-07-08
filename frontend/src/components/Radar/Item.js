@@ -51,13 +51,6 @@ const Subtitle = styled.p`
   font-size: 1rem;
   margin-bottom: 5px;
 `
-const Date = styled.p`
-  font-family: var(--secundary-font);
-  color: var(--semi-white);
-  font-weight: lighter;
-  font-size: .8rem;
-  padding-bottom: 5px;
-`
 
 const BandName = styled.b`
   color: var(--white);
@@ -68,12 +61,6 @@ const Item = (props) => {
 
   const year = props.year? `${props.year}`: ''
 
-  const secundaryInfo = props.genres? (
-    <Subtitle>
-      {props.genres.split(',').slice(0,2).join(', ')}
-    </Subtitle>
-  ):null;
-
   return (
     <MainDIV>
       <div>
@@ -81,10 +68,6 @@ const Item = (props) => {
         {props.isArtist ? (
           <Info>
             <Title href={props.spotify_url}><Position>{props.position}:</Position> {props.artistName}</Title>
-            {secundaryInfo}
-            <Date>
-              Added {props.date.match(/([^T]+)/)[0].split("-").reverse().join("/")}
-            </Date>
           </Info>
         ) : (
           <Info>
@@ -95,14 +78,12 @@ const Item = (props) => {
             <Subtitle>
             {year}
             </Subtitle>
-            <Date>
-              Added {props.date.match(/([^T]+)/)[0].split("-").reverse().join("/")}
-            </Date>
           </Info>
         )}
       </div>
       <ItemButton
         id={props.id}
+        date={props.date.match(/([^T]+)/)[0].split("-").reverse().join("/")}
         isInRadar={props.isInRadar}
         itemType={props.isArtist ? "artist" : "album"}
         componentType={props.componentType}

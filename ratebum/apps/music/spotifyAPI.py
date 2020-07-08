@@ -124,15 +124,16 @@ if __name__ == '__main__':
         
         for track in top_tracks:
             track_name = track['name']
-            track_date = track['album']['release_date']
+            track_album = track['album']['name']
+            track_date = track['album']['release_date'][:4]
             track_popularity = track['popularity']
 
-            string_format = '{} {} ({})'.format(track_popularity, track_name, track_date)
+            string_format = '{} {} - {} ({})'.format(track_popularity, track_name, track_album, track_date)
             print(string_format)
 
         print('\n')
 
-    print_top_tracks('franz')
+    print_top_tracks('foals')
 
 
         

@@ -18,11 +18,11 @@ import CenterCircularProgress from './CenterCircularProgress'
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#205080',
+      main: '#333',
     },
     secondary: {
       light: '#00cccc',
-      main: '#208080',
+      main: '#808080',
       contrastText: '#fff',
     },
   },

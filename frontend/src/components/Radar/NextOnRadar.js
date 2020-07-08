@@ -28,7 +28,7 @@ const SectionTitle = styled.h3`
   font-size: 1.4rem;
 `
 const ItemPicContainer = styled.div`
-  margin-right: 10px;
+  margin-right: 20px;
   @media (min-width: 768px) {
     margin-right: 3vw;
   }
@@ -96,9 +96,6 @@ const NextOnRadar = (props) => {
               } 
               alt="Item pic"
               />
-              <SubTitleDate>
-                Added {props.item.created_at.match(/([^T]+)/)[0].split("-").reverse().join("/")}
-              </SubTitleDate>
             </ItemPicContainer>  
             {props.item.album ? 
               <AlbumItem item={props.item}/> 
@@ -107,6 +104,7 @@ const NextOnRadar = (props) => {
             }
           </HelperDiv>
           <Menu 
+            date={props.item.created_at.match(/([^T]+)/)[0].split("-").reverse().join("/")}
             deleteItem={() => props.deleteItem(props.item.spotify_id)}
           />
         </Wrapper>

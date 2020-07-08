@@ -65,7 +65,9 @@ export default function SimpleMenu(props) {
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
-      >s
+      >
+        <MenuItem>Added {props.date}</MenuItem>
+        <MenuItem>Note about where i found this recomendation</MenuItem>
         <MenuItem onClick={handleDeleteItem}>Remove from Radar</MenuItem>
       </Menu>
     </div>

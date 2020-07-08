@@ -29,7 +29,7 @@ class ItemButton extends Component {
   render() {
     const spotify_id = this.props.id
     return (
-      <StyledMenu deleteItem={() => this.handleDeleteItem(spotify_id)} />
+      <StyledMenu deleteItem={() => this.handleDeleteItem(spotify_id)} date={this.props.date}/>
     );
   }
 }
