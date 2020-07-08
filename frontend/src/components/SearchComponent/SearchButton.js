@@ -1,5 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import agent from '../../agent'
 import Button from '../Button'
 import ConfirmationDialog from '../ConfirmationDialog'
@@ -64,11 +70,33 @@ export const SearchButton = (props) => {
         )
     }
     return (
+    <>
         <Button
             text="Add"
             disable={false}
-            func={() => handleAddItem(props.id, props.itemType)}
+            // func={() => handleAddItem(props.id, props.itemType)}
+                func={handleClickOpenDialog}
         />
+        <Dialog open={open} onClose={handleCloseDialog} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Note about this</DialogTitle>
+            <DialogContent>
+                <TextField
+                    autoFocus
+                    margin="dense"
+                    id="note"
+                    type="text"
+                    fullWidth
+                />
+            </DialogContent>
+            <DialogActions>
+                <Button 
+                    func={() => handleAddItem(props.id, props.itemType)}
+                    color="primary" 
+                    text='Save' 
+                />
+            </DialogActions>
+        </Dialog>
+    </>
     )
 
 }

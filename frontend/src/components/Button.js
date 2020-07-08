@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const Btn = styled.button`
   padding: 5px;
+  margin: 5px;
   background: ${props => props.disable? 'none;': 'var(--secundary-color);'}
   box-shadow: ${props => props.disable? 'none;' :'2px 2px 2px 1px rgba(0, 0, 0, 0.25);'}
   border: ${props => props.disable? '2px solid var(--secundary-color);': 'none;'}
