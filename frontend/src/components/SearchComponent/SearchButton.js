@@ -15,14 +15,16 @@ import {
     DELETE_FROM_RADAR
 } from '../../constants/actionType'
 
+let lastNote = ''
 export const SearchButton = (props) => {
     const [open, setOpen] = React.useState(false);
-    const [noteValue, setNoteValue] = React.useState('');
+    const [noteValue, setNoteValue] = React.useState(lastNote);
     const [isButtonDisable, setIsButtonDisable] = React.useState(true);
     const [disabledButtonText, setDisabledButtonText] = React.useState('Saved');
 
     const handleAddItem = (id, itemType) => {
         const payload = agent.radar.add(id, itemType, noteValue)
+        lastNote = noteValue
         props.onAdd(payload)
     }
 
