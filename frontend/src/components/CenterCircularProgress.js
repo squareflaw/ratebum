@@ -4,7 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const CenterDiv = styled.div`
   padding: 40px;
-  min-height:  ${props => props.small? '0;' : '100vh;'};
+  min-height:  ${props => props.small? '0;' : '85vh;'};
   display: flex;
   justify-content: center;
   align-items:  ${props => props.small ? 'flex-start;' : 'center;'};
