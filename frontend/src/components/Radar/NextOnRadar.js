@@ -105,6 +105,7 @@ const NextOnRadar = (props) => {
           </HelperDiv>
           <Menu 
             date={props.item.created_at.match(/([^T]+)/)[0].split("-").reverse().join("/")}
+            item={props.item}
             deleteItem={() => props.deleteItem(props.item.spotify_id)}
           />
         </Wrapper>
@@ -119,9 +120,6 @@ const NextOnRadar = (props) => {
 const ArtistItem = (props) => (
   <Info>
     <Title>{props.item.artist.name}</Title>
-    <SubTitle>{
-      props.item.artist.genres.split(',').slice(0,2).join(', ')
-    }</SubTitle>
     <a href={props.item.artist.spotify_url}>
       <Button text='See on Spotify'/>
     </a>

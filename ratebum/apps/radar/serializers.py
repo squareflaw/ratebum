@@ -22,6 +22,7 @@ class RadarItemSerializer(serializers.ModelSerializer):
             'user',
             'created_at',
             'updated_at',
+            'note',
         )
 
     def get_created_at(self, instance):

@@ -2,8 +2,8 @@ import superagentPromise from 'superagent-promise';
 import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
-// const API_ROOT = 'http://127.0.0.1:8000/api'
-const API_ROOT = 'https://ratebum.herokuapp.com/api'
+const API_ROOT = 'http://127.0.0.1:8000/api'
+// const API_ROOT = 'https://ratebum.herokuapp.com/api'
 
 
 let token = null;
@@ -44,10 +44,12 @@ const search = query => {
 const radar = {
   items: (page, order) => 
     requests.get(`/radar?p=${page}&o=${order}`),
-  add: (id, itemType) => 
-    requests.post('/radar', {id: id, itemType: itemType}),
+  add: (id, itemType, noteValue) => 
+    requests.post('/radar', {id: id, itemType: itemType, note:noteValue}),
   delete: id =>
-    requests.del(`/radar/${id}`)
+    requests.del(`/radar/${id}`),
+  updateNote: (id, note) =>
+    requests.post(`/radar/${id}/update-note`, {note})
 }
 
 const lineup = {

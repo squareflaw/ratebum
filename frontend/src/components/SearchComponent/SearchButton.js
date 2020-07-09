@@ -17,12 +17,18 @@ import {
 
 export const SearchButton = (props) => {
     const [open, setOpen] = React.useState(false);
+    const [noteValue, setNoteValue] = React.useState('');
     const [isButtonDisable, setIsButtonDisable] = React.useState(true);
     const [disabledButtonText, setDisabledButtonText] = React.useState('Saved');
 
     const handleAddItem = (id, itemType) => {
-        const payload = agent.radar.add(id, itemType)
+        const payload = agent.radar.add(id, itemType, noteValue)
         props.onAdd(payload)
+    }
+
+
+    const handleChange = e => {
+        setNoteValue(e.target.value)
     }
 
     const handleOnMouseOver = () =>{
@@ -77,7 +83,7 @@ export const SearchButton = (props) => {
             // func={() => handleAddItem(props.id, props.itemType)}
                 func={handleClickOpenDialog}
         />
-        <Dialog open={open} onClose={handleCloseDialog} aria-labelledby="form-dialog-title">
+        <Dialog open={open} fullWidth onClose={handleCloseDialog} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Note about this</DialogTitle>
             <DialogContent>
                 <TextField
@@ -86,6 +92,8 @@ export const SearchButton = (props) => {
                     id="note"
                     type="text"
                     fullWidth
+                    value={noteValue}
+                    onChange={handleChange}
                 />
             </DialogContent>
             <DialogActions>

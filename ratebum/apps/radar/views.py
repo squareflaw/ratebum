@@ -46,6 +46,7 @@ class RadarAPIView(APIView):
     def post(self, request): 
         spotify_id = request.data.get('id')
         item_type = request.data.get('itemType')
+        note = request.data.get('note', '')
         user = request.user.profile
 
         if not spotify_id or not item_type:
@@ -54,7 +55,7 @@ class RadarAPIView(APIView):
             raise ValidationError('item is already in radar')
 
         music_model_instance = get_music_model_instance(spotify_id, item_type)
-        radar_item = create_new_radar_item(music_model_instance, item_type, user)
+        radar_item = create_new_radar_item(music_model_instance, item_type, user, note)
         radar_item_serializer = RadarItemSerializer(radar_item)
         return Response({
                 "radarItem":radar_item_serializer.data
@@ -72,3 +73,15 @@ class RadarAPIView(APIView):
 
         profile.radar_items.all().get(spotify_id=spotify_id).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class RadarUpdateNoteAPIView(APIView):
+    permission_classes = (IsAuthenticated,)
+    serializer_class = RadarItemSerializer
+
+    def post(self, request, spotify_id):
+        profile = request.user.profile
+        note = request.data.get('note','')
+        radarItem = profile.radar_items.all().get(spotify_id=spotify_id)
+        radarItem.note = note
+        radarItem.save()
+        return Response(status=status.HTTP_200_OK)

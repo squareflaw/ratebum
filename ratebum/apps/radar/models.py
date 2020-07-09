@@ -33,13 +33,16 @@ class RadarItem(TimestampedModel):
         null=True
     )
 
-def create_new_radar_item(item_instance, item_type, user):
+    note = models.CharField(max_length=200, blank=True, null=True)
+
+def create_new_radar_item(item_instance, item_type, user, note):
     if item_type == 'artist':
         radar_item = RadarItem.objects.create(
             item_type=item_type,
             spotify_id=item_instance.spotify_id,
             user=user,
-            artist=item_instance
+            artist=item_instance,
+            note=note
         )
         return radar_item
 
@@ -49,7 +52,8 @@ def create_new_radar_item(item_instance, item_type, user):
             spotify_id=item_instance.spotify_id,
             user=user,
             artist=item_instance.artist,
-            album=item_instance
+            album=item_instance,
+            note=note
         )
         return radar_item
     else:

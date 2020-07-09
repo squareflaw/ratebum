@@ -6,6 +6,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import ConfirmationDialog from '../ConfirmationDialog'
+import Dialog from './Dialog';
 
 export default function SimpleMenu(props) {
   const RADAR_DELETE_MESSAGE = "Delete item from your radar?";
@@ -60,16 +61,13 @@ export default function SimpleMenu(props) {
           title={RADAR_DELETE_MESSAGE}
         />
       </Button>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
+      <Dialog
         open={Boolean(anchorEl)}
         onClose={handleClose}
-      >
-        <MenuItem>Added {props.date}</MenuItem>
-        <MenuItem>Note about where i found this recomendation</MenuItem>
-        <MenuItem onClick={handleDeleteItem}>Remove from Radar</MenuItem>
-      </Menu>
+        deleteItem={handleDeleteItem}
+        date={props.date}
+        item={props.item}
+      />
     </div>
   );
 }

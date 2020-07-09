@@ -24,6 +24,7 @@ const RadarList = (props) => {
   const Items = props.items.map((item, index) => {
     return (
       <Item
+        item={item}
         key={item.spotify_id}
         id={item.spotify_id}
         position={index + 2}

@@ -84,6 +84,7 @@ const Item = (props) => {
       <ItemButton
         id={props.id}
         date={props.date.match(/([^T]+)/)[0].split("-").reverse().join("/")}
+        item={props.item}
         isInRadar={props.isInRadar}
         itemType={props.isArtist ? "artist" : "album"}
         componentType={props.componentType}
